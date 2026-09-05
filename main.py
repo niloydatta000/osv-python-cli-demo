@@ -60,29 +60,6 @@ class OSV_API:
             return None
 
 
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching vulnerabilities: {e}")
-            return None
-
-    def get_vulnerabilities_by_payload(self, payload:dict) -> dict | None:
-        """
-        Fetches vulnerabilities based on a custom payload from the OSV API.
-        Args:
-            payload (dict): A dictionary containing the request payload.
-        Returns:
-            dict: A dictionary containing the vulnerabilities data, or None if an error occurred.
-        """
-
-        try:
-            response = requests.post(self.base_url, json=payload)
-            response.raise_for_status() # Raise an exception for HTTP errors
-            return response.json()
-        
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching vulnerabilities: {e}")
-            return None
-
-
 
 def main():
     """Main function to parse command-line arguments and fetch vulnerabilities using the OSV API."""
